@@ -1,7 +1,7 @@
 
 <html>
   <body>
-    <p>Hi Guys,</p>
+    <p>Greetings,</p>
         <h1>Artificial Intelligence Resourses<br></h1> 
            
        <p>Please refer to the PDF sent for the resources of Artificial Intelligence</p>

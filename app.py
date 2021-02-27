@@ -64,8 +64,8 @@ def send_mail(email,Sender_email,Subject,Password,attachment_mail):
 
     path_mail_contents="./Mail_Content/Mail_contents.txt"
     message_body=read_mail_contents_Frm_file(path_mail_contents)
-    filename = "Resourse_Artificial Intelligence.pdf"
-    attachment = open("./Resources_attachment/Resourse_Artificial Intelligence.pdf", "rb") 
+    filename = "Weel 0 Enviroment Setup.pdf"
+    attachment = open("./Resources_attachment/Weel 0 Enviroment Setup.pdf", "rb") 
     p = MIMEBase('application', 'octet-stream')
     p.set_payload((attachment).read()) 
     encoders.encode_base64(p)
@@ -111,18 +111,21 @@ if(st.sidebar.button("Sent Bulk Mail to every one")):
    emails_list=read_pdf(uploaded_file)
    sheet_obj = emails_list.active 
    m_row = sheet_obj.max_row 
+   count=0
    for i in range(1, m_row + 1): 
     cell_obj = sheet_obj.cell(row = i, column = 1)
     email=cell_obj.value
     if(check(email)):
        
        send_mail(email,Sender_email,Subject,Password,attachment_mail)
-       st.write(email," -->Email Sent")
+       st.write(count,email," -->Email Sent")
        st.success("Mail Sent")
+       count=count+1
     else:
-       st.write(email," -->Email Sent Failed")
+       st.write(count,email," -->Email Sent Failed")
        st.error("Mail Sent Failed") 
-   
+       count=count+1
+         
    st.success("All Mail Sent...")         
 mannual=st.sidebar.text_input("Enter_Email","") 
 if(st.sidebar.button("Sent Mail")):
