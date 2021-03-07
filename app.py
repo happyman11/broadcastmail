@@ -64,8 +64,10 @@ def send_mail(email,Sender_email,Subject,Password,attachment_mail):
 
     path_mail_contents="./Mail_Content/Mail_contents.txt"
     message_body=read_mail_contents_Frm_file(path_mail_contents)
-    filename = "Weel 0 Enviroment Setup.pdf"
-    attachment = open("./Resources_attachment/Weel 0 Enviroment Setup.pdf", "rb") 
+#file name
+    filename = "Week-1 AI-Overview.pdf"
+#file path 
+    attachment = open("./Resources_attachment/Week-1 AI-Overview.pdf", "rb") 
     p = MIMEBase('application', 'octet-stream')
     p.set_payload((attachment).read()) 
     encoders.encode_base64(p)
