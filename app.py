@@ -1,6 +1,7 @@
 #%%
 ###import packages
 
+#https://realpython.com/python-send-email/
 
 import streamlit as st
 import smtplib,ssl
@@ -61,21 +62,29 @@ def send_mail(email,Sender_email,Subject,Password,attachment_mail):
     s = smtplib.SMTP('smtp.gmail.com', 587) 
     s.starttls() 
     s.login(msg['From'], passd) 
-
-    path_mail_contents="./Mail_Content/Mail_contents.txt"
-    message_body=read_mail_contents_Frm_file(path_mail_contents)
+#greeting with email
+    message_greeting="Greetings  "+ email+" ,"
+#custom_mail_message
+    path_mail_custom_contents="./Mail_Content/Mail_content Custom_message.txt"
+    Custom_message_body=read_mail_contents_Frm_file(path_mail_custom_contents)
+#fixed_content
+    path_mail_fixed_contents="./Mail_Content/Mail_contents_fixed_template.txt"
+    fixed_message_body=read_mail_contents_Frm_file(path_mail_fixed_contents)
 #file name
     filename = "Week-1 AI-Overview.pdf"
 #file path 
     attachment = open("./Resources_attachment/Week-1 AI-Overview.pdf", "rb") 
+#attach file
     p = MIMEBase('application', 'octet-stream')
     p.set_payload((attachment).read()) 
     encoders.encode_base64(p)
     p.add_header('Content-Disposition', "attachment; filename= %s" % filename)
     msg.attach(p) 
 
-
-    msg.attach(MIMEText(message_body, 'html'))
+#attach message
+    msg.attach(MIMEText(message_greeting, 'plain'))
+    msg.attach(MIMEText(Custom_message_body, 'html'))
+    msg.attach(MIMEText(fixed_message_body, 'html'))
     s.login(msg['From'], passd) 
     s.sendmail(msg['From'], msg['To'], msg.as_string()) 
     s.quit()  
@@ -97,8 +106,8 @@ Subject=st.sidebar.text_input("Enter Subject of Email","Enter Subjects...")
 Subject=(str(Subject)).strip()
 
 
-st.sidebar.subheader("Mail Attachment __NOT FUNCTIONAL")
-attachment_mail = st.sidebar.file_uploader("Upload your input file", type=["xlsx","pfd","doc","png","jpeg","py","ipnyb"])
+#st.sidebar.subheader("Mail Attachment __NOT FUNCTIONAL")
+#attachment_mail = st.sidebar.file_uploader("Upload your input file", type=["xlsx","pfd","doc","png","jpeg","py","ipnyb"])
 
 st.sidebar.subheader("Reciever Xlsx(.xlsx format only)")
 uploaded_file = st.sidebar.file_uploader("Upload your input file", type=["xlsx"])
@@ -125,7 +134,7 @@ if(st.sidebar.button("Sent Bulk Mail to every one")):
        count=count+1
     else:
        st.write(count,email," -->Email Sent Failed")
-       st.error("Mail Sent Failed") 
+       st.error("Mail Sent Failed Incorrect Email") 
        count=count+1
          
    st.success("All Mail Sent...")         
@@ -139,7 +148,7 @@ if(st.sidebar.button("Sent Mail")):
       st.success("Mail Sent")
   else:
       st.write(email_mannual," -->Email Sent Failed")
-      st.error("Mail Sent Failed")
+      st.error("Mail Sent Failed Incorrect Email")
     
     
     

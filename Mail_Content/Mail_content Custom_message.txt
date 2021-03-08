@@ -1,0 +1,25 @@
+
+<html>
+  <body>
+    
+        <h1>Artificial Intelligence Learning 101<br></h1> 
+        
+       <h2> Weelcome to week 2</h2>
+       <p>This we will have overview of different types of learning inside artificial Intellegence.
+          <br>
+
+
+          <dt><b>Topics<b></dt>
+       <dd>1.Supervised Learning </dd>
+       <dd>2. Unsupervised Learning</dd>
+       <dd>3. Semi-Supervised Learning </dd>
+       <dd>4. Reinforcement Learning </dd>
+       </dl>
+       <br>
+       <p> Please refer to the Link for PDF  Link<p>
+       
+
+  </body>
+</html>
+
+

@@ -1,0 +1,15 @@
+
+<html>
+  <body>
+       <dt><b>Find Me</b></dt>
+       <dd>1. <a href="https://www.rstiwari.com">Profile</a> </dd>
+       <dd>2. <a href="https://tiwari11-rst.medium.com">Blog</a> </dd>
+       <dd>3. <a href="https://forms.gle/mhDYQKQJKtAKP78V7"> Find me</a> </dd>
+       </dl>
+       
+       <p><b>For Unsubscribing please mail to </b><a href="aintelligence112@gmail.com">email</p>
+
+  </body>
+</html>
+
+
